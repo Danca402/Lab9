@@ -9,6 +9,17 @@ containing hello, world!: the second string has been inserted between letters "o
 */
 
 #include <stdio.h> //don't forget to include the required libraries
+#include <stdlib.h>
+#include <string.h>
+
+char* insertstring(char* x,int input, char* y){
+  int lenx = strlen(x);
+  int leny = strlen(y);
+  int newlen = lenx + leny;
+
+  char* p = (char*)malloc((newlen+1)*sizeof(char));
+  
+}
 
 int main()
 {
