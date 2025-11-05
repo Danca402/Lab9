@@ -37,15 +37,24 @@ just the pointer pointing to the array of letters is assigned to str.
 #include<stdlib.h>
 #include<string.h>
 
-_____ copystring(_____ input){
+char* copystring(char* input){
 //length? strlen()
+  int len  = strlen(input);
 //allocate how many chars EXACTLY?
+  char *p = (char *)malloc((len+1)*sizeof(char));
 //copy strcpy()
+  strcpy(p,input);
+  return p;
 }
 int main(){
 char* s="Hello word";//as in lecture a pointer to an immutable object places in global memory
 char* dynamic_str=copystring(s); //create a dynamic version
 printf("%s",dynamic_str);
 //allocation need to be released!
-  return 0;
+char* strnew = copystring("Hi apple");
+printf("%s",strnew);
+free(dynamic_str);
+free(strnew);
+
+return 0;
 }
