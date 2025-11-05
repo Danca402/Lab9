@@ -42,6 +42,7 @@ char* copystring(char* input){
   int len  = strlen(input);
 //allocate how many chars EXACTLY?
   char *p = (char *)malloc((len+1)*sizeof(char));
+  if(p==NULL) return NULL;
 //copy strcpy()
   strcpy(p,input);
   return p;

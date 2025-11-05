@@ -17,21 +17,39 @@ The function should return with the address of a dynamically
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-____ substring(___ original, int start, int end)
+char* substring(char* original, int start, int end)
 {
   /*
    * Creates a new string from "orig" consisting of characters
    * between positions start and end. The caller is responsible
    * to release the memory behind the result of the function.
    */
+  int len = strlen(original);
+  if(start < 0){
+    printf("Invalid start address.");
+    return NULL;
+  } 
+  if(end > len){
+    printf("Invalid end address.");
+    return NULL;
+  }
+  int newlen = end - start;
+  char* p = (char*)malloc((newlen+1)*sizeof(char));
+
+  for(int i=start; i < end; i++){
+    p[i-start] = original[i];
+  }
+  p[end] ='\0';
+
+  return p;
 }
 
 int main()
 {
   char string[101] = "This is a text not containing anything rude or harsh"; // this is an array on the stack, mutable!
   char *substr = substring(string, 5, 10);
-  printf("%s", substring);
+  printf("%s",substr);
   // Deallocate!!
-
+  free(substr);
   return 0;
 }
